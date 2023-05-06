@@ -1,6 +1,6 @@
 {
   "name": "screenshots-pagepixels",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Screenshots PagePixels is an NPM package that provides a simple and easy-to-use interface for working with the PagePixels API. With this package, you can easily capture screenshots, manage screenshot configurations, create recurring screenshot schedules, setup multi-step screenshots, and more. Screenshots PagePixels provides convenient methods that wrap around the API endpoints, making it easy to get started and integrate with your application.",
   "main": "screenshots-pagepixels-client.js",
   "scripts": {

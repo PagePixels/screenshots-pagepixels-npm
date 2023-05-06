@@ -7,7 +7,7 @@ class ScreenshotsPagepixels {
     this.apiBaseUrl = 'https://api.pagepixels.com';
   }
 
-  async request(method, path, options = {}, body = null) {
+  async request(method, path, options = {}) {
     const url = new URL(this.apiBaseUrl + path);
     const isHttps = url.protocol === 'https:';
 
@@ -20,10 +20,20 @@ class ScreenshotsPagepixels {
       },
     };
 
-    if (body) {
+    let body = null;
+    if (method !== 'GET') {
       requestOptions.headers['Content-Type'] = 'application/json';
-      body = JSON.stringify(body);
+      body = JSON.stringify(options);
       requestOptions.headers['Content-Length'] = Buffer.byteLength(body);
+    } else {
+      // Convert options object to a query string
+      const queryString = Object.entries(options)
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+        .join('&');
+
+      if (queryString) {
+        requestOptions.path += '?' + queryString+'&access_token='+this.bearerToken;
+      }
     }
 
     return new Promise((resolve, reject) => {
@@ -34,7 +44,7 @@ class ScreenshotsPagepixels {
         });
         res.on('end', () => {
           if (res.statusCode >= 200 && res.statusCode < 300) {
-            if (path === '/snap' && !options.json) {
+            if (path === '/snap' && method === 'GET' && !options.json) {
               resolve(data);
             } else {
               resolve(JSON.parse(data));
