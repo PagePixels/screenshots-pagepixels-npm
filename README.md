@@ -1,4 +1,4 @@
-# PagePixels Screenshots
+# PagePixels Screenshots for NPM
 
 PagePixels is an API and web interface that provides automated screenshot capturing and change notifications for your web pages. With the PagePixels NPM Package, you can easily capture immediate screenshots, schedule recurring screenshots, set up change notifications, and use multi-step screenshotting functionality to complete forms, click links, and login to websites prior to taking screenshots.
 
