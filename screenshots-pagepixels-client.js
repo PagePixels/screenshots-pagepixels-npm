@@ -1,7 +1,7 @@
 const http = require('http');
 const https = require('https');
 
-class ScreenshotsPagepixelsClient {
+class ScreenshotsPagepixels {
   constructor(bearerToken) {
     this.bearerToken = bearerToken;
     this.apiBaseUrl = 'https://api.pagepixels.com';
@@ -106,4 +106,4 @@ class ScreenshotsPagepixelsClient {
   }
 }
 
-module.exports = ScreenshotsPagepixelsClient;
+module.exports = ScreenshotsPagepixels;
